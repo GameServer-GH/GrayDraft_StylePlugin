@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GameGhost 样式预览</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* 仅预览页：让系统浅色/深色下都有衬底对比 */
+    html { color-scheme: light dark; }
+  </style>
+</head>
+<body class="gameghost-preview-body">
+  <div class="gameghost-preview-shell">
+    <article class="gameghost-doc graydraft-document" data-gameghost="root">
+      <header class="gameghost-card">
+        <h1>GameGhost 毛玻璃</h1>
+        <p class="gameghost-muted">GrayDraft Style 插件 · 卡片化排版预览（本地打开 <code>preview/index.html</code> 即可）</p>
+      </header>
+
+      <section class="gameghost-card">
+        <h2>正文与链接</h2>
+        <p>这是一段普通段落，用于观察行高与字色。可访问 <a href="#">示例链接</a> 查看下划线与悬停效果。</p>
+        <p>块级内容建议包在 <code>gameghost-card</code> 或专用容器（如 <code>gameghost-table-wrap</code>）中，以获得统一的毛玻璃与阴影。</p>
+      </section>
+
+      <section class="gameghost-card gameghost-list--tight">
+        <h3>列表（卡片内）</h3>
+        <ol>
+          <li>有序步骤一</li>
+          <li>有序步骤二
+            <ul class="gameghost-list--plain">
+              <li>嵌套要点 A</li>
+              <li>嵌套要点 B</li>
+            </ul>
+          </li>
+          <li>有序步骤三</li>
+        </ol>
+      </section>
+
+      <div class="gameghost-card">
+        <h3>表格（GameGhost 标签）</h3>
+        <p class="gameghost-muted">外层 <code>gameghost-table-wrap</code> + <code>table.gameghost-table</code>；斑马纹加 <code>gameghost-table--striped</code>；数字列 <code>gameghost-num</code>。</p>
+        <div class="gameghost-table-wrap" data-gameghost="table">
+          <table class="gameghost-table gameghost-table--striped">
+            <caption>示例数据表</caption>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th class="gameghost-num">数值 A</th>
+                <th class="gameghost-num">数值 B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alpha</td>
+                <td class="gameghost-num">120</td>
+                <td class="gameghost-num">140</td>
+              </tr>
+              <tr>
+                <td>Beta</td>
+                <td class="gameghost-num">80</td>
+                <td class="gameghost-num">95</td>
+              </tr>
+              <tr>
+                <td>Gamma</td>
+                <td class="gameghost-num">42</td>
+                <td class="gameghost-num">42</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <section class="gameghost-card">
+        <h3>定义列表</h3>
+        <dl>
+          <dt>gameghost-doc</dt>
+          <dd>根文档容器，与 <code>graydraft-document</code> 同用。</dd>
+          <dt>gameghost-card</dt>
+          <dd>通用毛玻璃卡片，适合段落、说明、嵌套列表。</dd>
+        </dl>
+      </section>
+
+      <blockquote class="gameghost-quote" cite="#" data-gameghost="quote">
+        <p>引用块使用 <code>blockquote</code> 或 <code>gameghost-quote</code>，与表格、代码块一致采用毛玻璃卡片基元。</p>
+      </blockquote>
+
+      <pre class="gameghost-codeblock" data-gameghost="code"><code>// 代码块：pre.gameghost-codeblock
+function demo(x) {
+  return x * 2;
+}</code></pre>
+
+      <figure class="gameghost-figure" data-gameghost="figure">
+        <div style="height:120px;border-radius:14px;background:linear-gradient(135deg,color-mix(in oklab,LinkText 35%,transparent),color-mix(in oklab,CanvasText 12%,transparent));display:flex;align-items:center;justify-content:center;color:Canvas;font-size:14px;">占位图区域</div>
+        <figcaption>图注文字 · <code>figure.gameghost-figure</code></figcaption>
+      </figure>
+
+      <footer class="gameghost-card">
+        <p style="margin:0;font-size:0.9rem;opacity:0.85;">样式文件：<code>../style.css</code> · manifest 中 Agent 约定使用 <code>gameghost-</code> 前缀与 <code>data-gameghost</code>。</p>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>
