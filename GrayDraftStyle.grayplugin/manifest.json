@@ -1,0 +1,51 @@
+{
+  "id": "com.graydraft.styleplugin",
+  "name": "GrayDraft Style (notebook + Agent)",
+  "kind": "html-notebook",
+  "categories": ["notebook", "agent", "styling", "zh-Hans"],
+  "version": "0.1.1",
+  "author": "GrayDraft",
+  "license": "MIT",
+  "description": "Shared typography and card layout for HTML notebooks; provides an Agent HTML/CSS contract so the model emits matching class names.",
+  "repository": "https://github.com/your-username/GrayDraft_StylePlugin",
+  "graydraftMinVersion": "1.0.0",
+  "scope": "project",
+  "main": "main.js",
+  "style": "style.css",
+  "permissions": [
+    "dom:inject-style",
+    "dom:modify-content"
+  ],
+  "agent": {
+    "enabled": true,
+    "skillTitle": "GrayDraft Style 文档",
+    "skillSummary": "根容器用 `gd-style-doc`（常配合 `graydraft-document`）。卡片用 `gd-card`，次要文字用 `gd-muted`。列表用原生 `ul`/`ol`/`li`；紧凑列表容器加 `gd-list--tight`，无符号列表用 `gd-list--plain`。表格包在 `gd-table-wrap` 内，表头用 `thead`/`th`，斑马纹表加 `gd-table--striped`，数字列单元格可加 `gd-num`。不要外链 CSS/JS，不要内联事件属性。",
+    "contractVersion": "1",
+    "vocabulary": {
+      "rootSelectors": [".gd-style-doc", "article.gd-style-doc"],
+      "classPrefixes": ["gd-"],
+      "dataAttributes": ["data-gd-component"]
+    },
+    "snippets": [
+      {
+        "name": "doc_root",
+        "description": "整页内容根容器",
+        "html": "<article class=\"gd-style-doc graydraft-document\"><header class=\"gd-card\"><h1>标题</h1><p class=\"gd-muted\">副标题</p></header><section class=\"gd-card\"><p>正文段落。</p></section></article>"
+      },
+      {
+        "name": "list_block",
+        "description": "有序/无序列表",
+        "html": "<section class=\"gd-card gd-list--tight\"><h3>步骤</h3><ol><li>准备数据</li><li>校验格式</li><li>导出</li></ol><h3>要点</h3><ul><li>使用 <code>gd-list--tight</code> 更紧凑</li><li>嵌套列表自动缩进</li></ul></section>"
+      },
+      {
+        "name": "table_block",
+        "description": "带标题与斑马纹的表格",
+        "html": "<div class=\"gd-table-wrap\"><table class=\"gd-table--striped\"><caption>销售概览</caption><thead><tr><th>产品</th><th class=\"gd-num\">Q1</th><th class=\"gd-num\">Q2</th></tr></thead><tbody><tr><td>Alpha</td><td class=\"gd-num\">120</td><td class=\"gd-num\">140</td></tr><tr><td>Beta</td><td class=\"gd-num\">80</td><td class=\"gd-num\">95</td></tr></tbody></table></div>"
+      }
+    ],
+    "negativeHints": [
+      "不要引入 tailwind / bootstrap CDN",
+      "不要写 onclick 等内联事件处理器"
+    ]
+  }
+}
